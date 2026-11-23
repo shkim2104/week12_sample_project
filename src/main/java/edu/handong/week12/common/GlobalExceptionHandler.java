@@ -1,6 +1,7 @@
 package edu.handong.week12.common;
 
 import edu.handong.week12.book.BookNotFoundException;
+import org.springframework.data.mapping.PropertyReferenceException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -39,5 +40,10 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleTypeMismatch(MethodArgumentTypeMismatchException e) {
         return ResponseEntity.badRequest()
                 .body(ErrorResponse.of("INVALID_PARAMETER", "'" + e.getName() + "' 값의 형식이 올바르지 않습니다."));
+    }
+
+    @ExceptionHandler(PropertyReferenceException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidSort(PropertyReferenceException e) {
+        return ResponseEntity.badRequest().body(ErrorResponse.of("INVALID_SORT", "정렬할 수 없는 필드입니다: " + e.getPropertyName()));
     }
 }

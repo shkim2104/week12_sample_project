@@ -2,10 +2,10 @@ package edu.handong.week12.book;
 
 import edu.handong.week12.book.dto.BookRequest;
 import edu.handong.week12.book.dto.BookResponse;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
@@ -16,10 +16,9 @@ public class BookService {
     this.repository = repository;
   }
 
-  public List<BookResponse> findAll() {
-    return repository.findAll().stream()
-        .map(BookResponse::from)
-        .toList();
+  public Page<BookResponse> findAll(Pageable pageable) {
+    Page<Book> books = repository.findAll(pageable);
+    return books.map(BookResponse::from);
   }
 
   public BookResponse findById(Long id) {
