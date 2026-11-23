@@ -23,7 +23,8 @@ public class BookService {
   }
 
   public BookResponse findById(Long id) {
-    Book book = repository.findById(id).orElseThrow();
+    Book book = repository.findById(id)
+        .orElseThrow(() -> new BookNotFoundException(id));
     return BookResponse.from(book);
   }
 
@@ -36,13 +37,17 @@ public class BookService {
 
   @Transactional
   public BookResponse update(Long id, BookRequest request) {
-    Book book = repository.findById(id).orElseThrow();
+    Book book = repository.findById(id)
+        .orElseThrow(() -> new BookNotFoundException(id));
     book.update(request.title(), request.author(), request.price());
     return BookResponse.from(book);
   }
 
   @Transactional
   public void delete(Long id) {
+    if (!repository.existsById(id)) {
+      throw new BookNotFoundException(id);
+    }
     repository.deleteById(id);
   }
 }
