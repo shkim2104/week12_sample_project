@@ -3,7 +3,7 @@ package edu.handong.week12.book;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "books")
+@Table(name = "week12_books")
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
