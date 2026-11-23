@@ -2,12 +2,10 @@
 
  
 
- **GitHub Repository** https://github.com/2026-2-WebService/assign12-c01-22300133 |
- **Render Deployment**  `TODO: https://<서비스명>.onrender.com` |
- **Swagger UI (배포)**  `TODO: https://<서비스명>.onrender.com/swagger-ui.html` |
-**OpenAPI JSON (배포)**  `TODO: https://<서비스명>.onrender.com/v3/api-docs` |
+**GitHub Repository** https://github.com/2026-2-WebService/assign12-c01-22300133 |
+**Render Deployment**  https://week12-sample-project-vfng.onrender.com
 
----
+
 
 ## 1. Project Information
 
@@ -188,11 +186,6 @@ sort=price,desc는 Sort.by(DESC, "price")로 바뀌고, findAll(pageable)을 실
 | `DB_USERNAME` | (비공개) |
 | `DB_PASSWORD` | (비공개) |
 | `DDL_AUTO` | `validate` |
-
-**배포 확인**
-- API: `TODO: https://<서비스명>.onrender.com/api/books`
-- Swagger UI: `TODO: https://<서비스명>.onrender.com/swagger-ui.html`
-
 
 ### 6-3. 실습 환경 문제 및 조치 내역
 
